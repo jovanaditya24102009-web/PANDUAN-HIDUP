@@ -5,157 +5,230 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ULTIMATE LIFE OPERATING SYSTEM v3.0</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Overlay Navigation Sidebar -->
+    <!-- Backdrop & Overlay Shell -->
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
+    <div id="toastContainer" class="toast-container"></div>
 
-    <!-- Sidebar Drawer -->
+    <!-- Sidebar Navigation Drawer -->
     <aside id="sidebar" class="sidebar">
         <div class="sidebar-header">
-            <h2>📖 LIFE OS v3.0</h2>
-            <p class="subtitle">Single Source of Truth</p>
-            <button id="closeSidebarBtn" class="close-btn">&times;</button>
+            <div class="brand-logo">
+                <span class="logo-icon">⚡</span>
+                <div class="logo-text">
+                    <h2>LIFE OS <span class="version-tag">v3.0</span></h2>
+                    <p class="subtitle">Personal Executive Suite</p>
+                </div>
+            </div>
+            <button id="closeSidebarBtn" class="close-btn" aria-label="Close Navigation">&times;</button>
         </div>
         
         <nav class="sidebar-nav">
             <a href="#" class="nav-link active" data-target="dashboard">
-                <span class="icon">🏛️</span> <span>Dashboard & Routine</span>
+                <span class="icon">🏛️</span>
+                <span class="label">Dashboard & Routine</span>
             </a>
             <a href="#" class="nav-link" data-target="school">
-                <span class="icon">📚</span> <span>Jadwal Sekolah Kelas 12</span>
+                <span class="icon">📚</span>
+                <span class="label">Jadwal Sekolah Kelas 12</span>
             </a>
             <a href="#" class="nav-link" data-target="gym">
-                <span class="icon">🏋️‍♂️</span> <span>Gym & Hypertrophy Split</span>
+                <span class="icon">🏋️‍♂️</span>
+                <span class="label">Gym & Hypertrophy Split</span>
             </a>
             <a href="#" class="nav-link" data-target="skincare">
-                <span class="icon">🧴</span> <span>Barrier Repair & Masseter</span>
+                <span class="icon">🧴</span>
+                <span class="label">Barrier Repair & Masseter</span>
             </a>
             <a href="#" class="nav-link" data-target="nutrition">
-                <span class="icon">🥗</span> <span>Nutrisi & Hidrasi (3.8L-4.0L)</span>
+                <span class="icon">🥗</span>
+                <span class="label">Nutrisi & Hidrasi (3.8L-4.0L)</span>
             </a>
             <a href="#" class="nav-link" data-target="habits">
-                <span class="icon">📊</span> <span>Habit Tracker & Pomodoro</span>
+                <span class="icon">📊</span>
+                <span class="label">Habit Tracker & Pomodoro</span>
             </a>
             <a href="#" class="nav-link" data-target="law">
-                <span class="icon">⚖️</span> <span>Preparasi Hukum (UI / UNSRI)</span>
+                <span class="icon">⚖️</span>
+                <span class="label">Preparasi Hukum (UI / UNSRI)</span>
             </a>
         </nav>
 
         <div class="sidebar-footer">
-            <div class="user-pill">
-                <span class="user-avatar">J</span>
-                <div class="user-info">
+            <div class="user-profile-card">
+                <div class="user-avatar">J</div>
+                <div class="user-details">
                     <span class="user-name">Jov (Jovan)</span>
-                    <span class="user-status">Kelas 12 • 170cm / 60kg</span>
+                    <span class="user-meta">Kelas 12 • Target 65-68 kg</span>
                 </div>
             </div>
         </div>
     </aside>
 
-    <!-- Main Content Area -->
+    <!-- Main Workspace Area -->
     <div class="main-wrapper">
         
-        <!-- Top Application Bar -->
+        <!-- Application Topbar -->
         <header class="app-header">
-            <button id="menuToggle" class="menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <h1 id="currentPageTitle">Dashboard & Routine</h1>
+            <div class="header-left">
+                <button id="menuToggle" class="menu-btn" aria-label="Toggle Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 id="currentPageTitle">Dashboard & Routine</h1>
+            </div>
+            
             <div class="header-right">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">SYSTEM ACTIVE</span>
+                </div>
                 <div id="digitalClock" class="clock-display">00:00:00</div>
             </div>
         </header>
 
+        <!-- Dynamic Main Content -->
         <main class="content-body">
 
             <!-- SECTION 1: DASHBOARD & ROUTINE -->
             <section id="dashboard" class="page-section active">
                 <div class="card hero-card">
+                    <div class="card-glow"></div>
                     <div class="badge-tag">BLUEPRINT TRANSFORMASI TOTAL</div>
                     <h2>ULTIMATE LIFE OPERATING SYSTEM v3.0</h2>
                     <p class="quote">"Kedisiplinan dan rasa lelah yang saya eksekusi hari ini adalah investasi berharga untuk kebebasan, performa puncak, dan kehormatan diri saya di masa depan."</p>
+                    
+                    <div class="stats-banner">
+                        <div class="stat-item">
+                            <span class="stat-value">Kelas 12</span>
+                            <span class="stat-label">Akademik Fokus</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">6-Day Split</span>
+                            <span class="stat-label">Hypertrophy Program</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">3.8L - 4.0L</span>
+                            <span class="stat-label">Target Hidrasi Harian</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">S1 Hukum</span>
+                            <span class="stat-label">Target PTN UI/UNSRI</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="grid-2">
                     <div class="card">
-                        <h3>⏰ Current Time Blocking Phase</h3>
+                        <div class="card-header">
+                            <h3>⏰ Time Blocking Evaluator</h3>
+                            <span class="live-pill">REALTIME</span>
+                        </div>
                         <div class="timeblock-status">
-                            <h4 id="currentActivityTitle">Mengevaluasi Jadwal...</h4>
-                            <p id="currentActivityDesc">Sistem sedang menyelaraskan dengan jam realtime.</p>
+                            <h4 id="currentActivityTitle">Mengevaluasi Jadwal Realtime...</h4>
+                            <p id="currentActivityDesc">Sistem sedang menyelaraskan dengan jam dan hari lokal.</p>
                         </div>
                     </div>
 
                     <div class="card">
-                        <h3>🎯 Target Strategis Utama</h3>
+                        <div class="card-header">
+                            <h3>🎯 Pillar Objectives Utama</h3>
+                        </div>
                         <ul class="checklist-static">
-                            <li><strong>Skin Barrier Repair:</strong> Pemulihan total skin barrier & de-tension masseter.</li>
-                            <li><strong>Hypertrophy Target:</strong> Bulking bersih bertahap dari 60 kg menuju 65–68 kg.</li>
-                            <li><strong>Akademik:</strong> Maksimalkan Nilai Rapot Semester 5 untuk SNBT PTN Hukum (UI / UNSRI).</li>
-                            <li><strong>Hidrasi:</strong> Target harian non-negotiable 3.8L – 4.0L air putih.</li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong>Skin Barrier Repair:</strong> Pemulihan total kesehatan kulit & relaksasi masseter 2x sehari.
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong>Hypertrophy Target:</strong> Lean bulking dari 60 kg bertahap ke 65–68 kg.
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong>Akademik Sekolah:</strong> Memaksimalkan Nilai Rapot Semester 5 & KBM Kelas 12.
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong>Hydration Discipline:</strong> Pemenuhan kuota hidrasi 3.8L – 4.0L air putih harian.
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h3>🌅 Rutinitas Harian Ringkas</h3>
+                    <div class="card-header">
+                        <h3>🌅 Struktur Timetable Harian Utama</h3>
+                    </div>
                     <div class="timeline">
                         <div class="timeline-item">
-                            <span class="time">05.00 - 06.40</span>
+                            <div class="time-badge">05.00 - 06.40</div>
                             <div class="timeline-content">
-                                <strong>Morning Routine</strong>
-                                <p>Air Putih 500ml -> Gentle Cleanser + Moisturizer + Pijat Masseter Pagi (3m) -> Mandi & Sunscreen (2 ruas jari) -> Sarapan High Protein -> Berangkat Sekolah.</p>
+                                <h4>Morning Prime Routine</h4>
+                                <p>Air Putih 500ml ➔ Gentle Cleanser + Moisturizer + Pijat Masseter Pagi (3m) ➔ Mandi & Sunscreen (2 ruas jari) ➔ Sarapan High Protein ➔ Berangkat Sekolah.</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <span class="time">07.00 - 15.45</span>
+                            <div class="time-badge">07.00 - 15.45</div>
                             <div class="timeline-content">
-                                <strong>School Block (KBM Kelas 12)</strong>
-                                <p>Fokus KBM penuh, cicil hidrasi bertahap (total 2.25L di sekolah), makan siang karbo kompleks + protein tinggi.</p>
+                                <h4>Academic School Block (Kelas 12)</h4>
+                                <p>Fokus KBM penuh, cicil hidrasi bertahap (target 2.25L tercapai di sekolah), makan siang karbo kompleks + protein tinggi.</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <span class="time">16.30 - 18.00</span>
+                            <div class="time-badge">16.30 - 18.00</div>
                             <div class="timeline-content">
-                                <strong>Gym / Active Recovery Block</strong>
+                                <h4>Physical Execution Block</h4>
                                 <p>Pre-workout snack jam 16.15. Sesi Gym Hypertrophy 6-Day Split / Treadmill Active Recovery Cardio (750ml air).</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <span class="time">19.15 - 22.00</span>
+                            <div class="time-badge">19.15 - 22.00</div>
                             <div class="timeline-content">
-                                <strong>Night Routine & Recovery</strong>
-                                <p>Review materi esok hari (60m) -> Latihan Soal SNBT / Hukum -> Night Skincare + Warm Compress & Pijat Masseter (5m) -> Audit Habit & Tidur Jam 22.00.</p>
+                                <h4>Night Recovery & Intellect Block</h4>
+                                <p>Review materi esok hari (60m) ➔ Latihan Soal SNBT / Preparasi Hukum ➔ Night Skincare + Warm Compress & Pijat Masseter (5m) ➔ Audit Habit Tracker ➔ Sleep Mode Jam 22.00.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SECTION 2: SEKOLAH -->
+            <!-- SECTION 2: SEKOLAH KELAS 12 -->
             <section id="school" class="page-section">
                 <div class="card">
-                    <div class="section-header">
-                        <h2>📚 Jadwal Pelajaran Detail Kelas 12</h2>
-                        <input type="text" id="scheduleSearchInput" placeholder="Cari mata pelajaran / kode guru..." class="search-bar">
+                    <div class="section-header flex-header">
+                        <div>
+                            <h2>📚 Jadwal Pelajaran Detail Kelas 12</h2>
+                            <p class="subtext">Sistem pencarian jadwal presisi berdasarkan waktu KBM.</p>
+                        </div>
+                        <input type="text" id="scheduleSearchInput" placeholder="🔍 Cari pelajaran atau kode guru..." class="search-bar">
                     </div>
                     
                     <div class="table-responsive">
                         <table class="data-table" id="scheduleTable">
                             <thead>
                                 <tr>
-                                    <th>Waktu</th>
-                                    <th>Mata Pelajaran</th>
-                                    <th>Kode Guru</th>
-                                    <th>Durasi</th>
+                                    <th>WAKTU</th>
+                                    <th>MATA PELAJARAN</th>
+                                    <th>KODE GURU</th>
+                                    <th>DURASI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Injected via JavaScript -->
+                                <!-- Injected via JavaScript Engine -->
                             </tbody>
                         </table>
                     </div>
@@ -163,22 +236,28 @@
 
                 <div class="grid-2">
                     <div class="card">
-                        <h3>📌 Fokus Antisipasi Belajar Malam Hari</h3>
-                        <ul class="bullet-list">
-                            <li><strong>Minggu Malam:</strong> Informatika (AR), PJOK (RK), Sejarah Wajib (PU), PKN (EC).</li>
+                        <div class="card-header">
+                            <h3>📌 Antisipasi Belajar Mandiri Malam Hari</h3>
+                        </div>
+                        <ul class="bullet-list-custom">
                             <li><strong>Senin Malam:</strong> B. Indonesia (RS), Matematika (SG), B. Inggris (NH), Sejarah Lanjut (SY).</li>
                             <li><strong>Selasa Malam:</strong> Informatika (AR), B. Jepang (IK), Seni Budaya (DA), Ekonomi (SI), PKWU (AS).</li>
                             <li><strong>Rabu Malam:</strong> Agama (MD), B. Jepang (IK), B. Indonesia (RS), Sejarah Lanjut (SY).</li>
                             <li><strong>Kamis Malam:</strong> Ekonomi (SL), Matematika (SG).</li>
+                            <li><strong>Minggu Malam:</strong> Informatika (AR), PJOK (RK), Sejarah Wajib (PU), PKN (EC).</li>
                         </ul>
                     </div>
 
                     <div class="card">
-                        <h3>🚨 Emergency Protocol (Saat Tugas Menumpuk)</h3>
-                        <p>Jika tugas/ulangan sekolah sangat menumpuk dan tidak sempat pergi ke gym:</p>
-                        <blockquote class="highlight-box">
-                            Potong waktu gym menjadi <strong>20 Menit Home Workout</strong> (Push-up, Bodyweight Squat, Plank) agar disiplin dan ritme latihan fisik tidak terputus sama sekali!
-                        </blockquote>
+                        <div class="card-header">
+                            <h3>🚨 Protocol Kondisi Darurat (Tugas Menumpuk)</h3>
+                        </div>
+                        <div class="emergency-box">
+                            <p>Jika beban ujian atau tugas sekolah berada di tingkat kritis dan waktu gym terbatas:</p>
+                            <div class="highlight-callout">
+                                Jangan membatalkan latihan sepenuhnya! Potong sesi gym menjadi <strong>20 Menit Home Workout Engine</strong> (Push-up, Bodyweight Squat, Plank) agar ritme disiplin fisik tidak pernah runtuh!
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -186,15 +265,17 @@
             <!-- SECTION 3: GYM & HYPERTROPHY -->
             <section id="gym" class="page-section">
                 <div class="card">
-                    <h2>🏋️ Program Latihan 6-Day Split Routine</h2>
-                    <p>Fokus: Progressive Overload & Hypertrophy untuk mencapai BB Ideal 65–68 kg.</p>
+                    <div class="card-header">
+                        <h2>🏋️ Program Latihan 6-Day Split Routine</h2>
+                    </div>
+                    <p>Fokus Utama: Progressive Overload & Hypertrophy untuk menaikkan massa otot secara bersih (BB Target: 65–68 kg).</p>
                 </div>
 
                 <div class="grid-3">
                     <div class="card gym-card">
                         <div class="day-badge">SENIN</div>
                         <h3>PUSH DAY</h3>
-                        <span class="target-muscle">Dada, Shoulder, Triceps</span>
+                        <span class="target-muscle">Chest, Shoulder, Triceps Focus</span>
                         <ul class="exercise-list">
                             <li>Incline Dumbbell Press <span>3 x 8-12</span></li>
                             <li>Flat Bench / Machine Press <span>3 x 8-10</span></li>
@@ -207,7 +288,7 @@
                     <div class="card gym-card">
                         <div class="day-badge">SELASA</div>
                         <h3>PULL DAY</h3>
-                        <span class="target-muscle">Back, Biceps, Abs</span>
+                        <span class="target-muscle">Back, Biceps, Abs Focus</span>
                         <ul class="exercise-list">
                             <li>Lat Pulldown / Pull-ups <span>3 x 8-12</span></li>
                             <li>Seated Cable / Bent Over Row <span>3 x 10-12</span></li>
@@ -220,7 +301,7 @@
                     <div class="card gym-card">
                         <div class="day-badge">RABU</div>
                         <h3>LEG DAY</h3>
-                        <span class="target-muscle">Legs & Forearms</span>
+                        <span class="target-muscle">Legs & Forearms Focus</span>
                         <ul class="exercise-list">
                             <li>Barbell Squats / Leg Press <span>4 x 8-10</span></li>
                             <li>Romanian Deadlift (RDL) <span>3 x 10-12</span></li>
@@ -231,38 +312,38 @@
                     </div>
 
                     <div class="card gym-card rest-day">
-                        <div class="day-badge">KAMIS</div>
+                        <div class="day-badge rest">KAMIS</div>
                         <h3>ACTIVE RECOVERY</h3>
-                        <span class="target-muscle">Rest & Cardio Focus</span>
+                        <span class="target-muscle">Rest & Cardio Regeneration</span>
                         <ul class="exercise-list">
                             <li>Treadmill Incline Walk <span>30-45 Mnt</span></li>
                             <li>Kecepatan: 4.5–5.0 km/jam <span>Incline 8-10%</span></li>
-                            <li>Full Body Dynamic Stretching <span>15 Mnt</span></li>
+                            <li>Full Body Mobility & Stretch <span>15 Mnt</span></li>
                         </ul>
                     </div>
 
                     <div class="card gym-card">
                         <div class="day-badge">JUMAT</div>
                         <h3>UPPER DAY</h3>
-                        <span class="target-muscle">Chest, Back, Shoulders, Arms</span>
+                        <span class="target-muscle">Upper Body Volume Focus</span>
                         <ul class="exercise-list">
                             <li>Incline Dumbbell Press <span>3 x 10</span></li>
                             <li>Lat Pulldown <span>3 x 10</span></li>
                             <li>Dumbbell Shoulder Press <span>3 x 10</span></li>
                             <li>Dumbbell / Cable Flyes <span>3 x 12</span></li>
-                            <li>Superset: Biceps + Triceps <span>3 x 12</span></li>
+                            <li>Superset Biceps + Triceps <span>3 x 12</span></li>
                         </ul>
                     </div>
 
                     <div class="card gym-card">
                         <div class="day-badge">SABTU</div>
                         <h3>LOWER DAY</h3>
-                        <span class="target-muscle">Legs & Core Focus</span>
+                        <span class="target-muscle">Legs & Core Volume Focus</span>
                         <ul class="exercise-list">
                             <li>Leg Press / Goblet Squat <span>4 x 10-12</span></li>
                             <li>Lying Leg Curls <span>3 x 12</span></li>
                             <li>Walking Lunges <span>3 x 12 / kaki</span></li>
-                            <li>Plank <span>3 x 60 Detik</span></li>
+                            <li>Plank Hold <span>3 x 60 Detik</span></li>
                         </ul>
                     </div>
                 </div>
@@ -272,43 +353,86 @@
             <section id="skincare" class="page-section">
                 <div class="grid-2">
                     <div class="card">
-                        <h2>🧴 Skin Barrier Repair Plan</h2>
-                        <p class="alert-banner">🚨 HENTIKAN sementara peeling serum / eksfoliasi keras (AHA/BHA tinggi, Retinol) sampai kulit sepenuhnya pulih.</p>
+                        <div class="card-header">
+                            <h2>🧴 Skin Barrier Repair Protocol</h2>
+                        </div>
+                        <div class="alert-banner">
+                            🚨 HENTIKAN sementara penggunaan peeling serum, exfoliator keras (AHA/BHA tinggi), dan Retinol sampai barrier pulih total!
+                        </div>
 
-                        <h3>Morning Routine</h3>
-                        <ul class="routine-steps">
-                            <li class="interactive-step"><strong>1. Gentle Cleanser:</strong> Pembersih wajah Low pH tanpa scrub & wewangian tajam.</li>
-                            <li class="interactive-step"><strong>2. Barrier Moisturizer:</strong> Pelembab mengandung Ceramide, Hyaluronic Acid, atau Centella.</li>
-                            <li class="interactive-step"><strong>3. Sunscreen:</strong> SPF 30–50 PA++++ sebanyak 2 ruas jari secara merata.</li>
+                        <h3>Morning Protocol</h3>
+                        <ul class="step-interactive-list">
+                            <li class="interactive-step">
+                                <span class="step-num">1</span>
+                                <div>
+                                    <strong>Gentle Cleanser:</strong> Pembersih Low pH tanpa scrub atau pewangi tajam.
+                                </div>
+                            </li>
+                            <li class="interactive-step">
+                                <span class="step-num">2</span>
+                                <div>
+                                    <strong>Barrier Moisturizer:</strong> Formula Ceramide, Hyaluronic Acid, atau Centella.
+                                </div>
+                            </li>
+                            <li class="interactive-step">
+                                <span class="step-num">3</span>
+                                <div>
+                                    <strong>Sunscreen:</strong> SPF 30–50 PA++++ takaran 2 ruas jari merata.
+                                </div>
+                            </li>
                         </ul>
 
-                        <h3 style="margin-top: 20px;">Night Routine</h3>
-                        <ul class="routine-steps">
-                            <li class="interactive-step"><strong>1. Gentle Cleanser:</strong> Cuci bersih minyak & debu seharian.</li>
-                            <li class="interactive-step"><strong>2. Barrier Moisturizer:</strong> Aplikasikan sedikit lebih tebal untuk mengunci kelembapan malam.</li>
+                        <h3 style="margin-top: 25px;">Night Protocol</h3>
+                        <ul class="step-interactive-list">
+                            <li class="interactive-step">
+                                <span class="step-num">1</span>
+                                <div>
+                                    <strong>Gentle Cleanser:</strong> Membersihkan sisa sunscreen & polusi harian.
+                                </div>
+                            </li>
+                            <li class="interactive-step">
+                                <span class="step-num">2</span>
+                                <div>
+                                    <strong>Barrier Moisturizer:</strong> Aplikasikan lapisan tebal untuk mengunci hidrasi malam.
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
                     <div class="card">
-                        <h2>💆 Masseter Relaxation Plan</h2>
-                        <p>Reduksi ketegangan otot rahang & pembengkakan (2x sehari: Pagi & Malam).</p>
+                        <div class="card-header">
+                            <h2>💆 Masseter De-tension Engine</h2>
+                        </div>
+                        <p class="subtext">Eksekusi 2x sehari (Pagi & Malam) untuk relaksasi otot rahang.</p>
 
-                        <div class="masseter-guide">
-                            <div class="step-box interactive-step">
-                                <h4>1. Warm Compress (Khusus Malam)</h4>
-                                <p>Tempelkan handuk hangat di area rahang kiri & kanan selama 3–5 menit sebelum pijatan.</p>
+                        <div class="masseter-guide-grid">
+                            <div class="masseter-box interactive-step">
+                                <div class="box-icon">🔥</div>
+                                <div>
+                                    <h4>1. Warm Compress (Malam)</h4>
+                                    <p>Tempelkan handuk hangat di rahang kiri & kanan selama 3–5 menit.</p>
+                                </div>
                             </div>
-                            <div class="step-box interactive-step">
-                                <h4>2. Pijatan Buku Jari</h4>
-                                <p>Kepalkan tangan, gunakan buku jari menekan lembut otot masseter di depan telinga.</p>
+                            <div class="masseter-box interactive-step">
+                                <div class="box-icon">👊</div>
+                                <div>
+                                    <h4>2. Pijatan Buku Jari</h4>
+                                    <p>Gunakan buku jari menekan lembut otot masseter di depan telinga.</p>
+                                </div>
                             </div>
-                            <div class="step-box interactive-step">
-                                <h4>3. Gerakan Memutar</h4>
-                                <p>Lakukan gerakan memutar pelan ke arah luar sebanyak 12–15 kali per sisi.</p>
+                            <div class="masseter-box interactive-step">
+                                <div class="box-icon">🔄</div>
+                                <div>
+                                    <h4>3. Gerakan Memutar</h4>
+                                    <p>Putar perlahan ke arah luar sebanyak 12–15 kali per sisi.</p>
+                                </div>
                             </div>
-                            <div class="step-box interactive-step">
-                                <h4>4. Stretching Rahang "O"</h4>
-                                <p>Buka mulut perlahan membentuk huruf "O", tahan 5 detik, rileks. Ulangi 5 kali.</p>
+                            <div class="masseter-box interactive-step">
+                                <div class="box-icon">😮</div>
+                                <div>
+                                    <h4>4. Stretching Rahang "O"</h4>
+                                    <p>Buka mulut perlahan membentuk huruf "O", tahan 5 detik. Ulangi 5x.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -318,24 +442,28 @@
             <!-- SECTION 5: NUTRITION & HYDRATION -->
             <section id="nutrition" class="page-section">
                 <div class="card hero-card-blue">
-                    <h2>💧 High-Performance Hydration Engine</h2>
-                    <p>Target Harian Harian: <strong>3.8 Liter – 4.0 Liter</strong></p>
+                    <div class="card-header">
+                        <h2>💧 High-Performance Hydration Engine</h2>
+                    </div>
+                    <p>Target Harian Non-Negotiable: <strong>3.8 Liter – 4.0 Liter</strong></p>
                     
                     <div class="water-tracker-container">
-                        <div class="water-status-text" id="waterDisplay">0.00L / 3.8L (0%)</div>
+                        <div class="water-status-text" id="waterDisplay">0.00L / 3.80L (0%)</div>
                         <div class="progress-bar-bg">
                             <div id="waterProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
                         </div>
                         <div class="button-group">
                             <button id="addWaterBtn" class="btn btn-primary">+ Minum 250ml</button>
-                            <button id="resetWaterBtn" class="btn btn-secondary">Reset Tracker</button>
+                            <button id="resetWaterBtn" class="btn btn-secondary">Reset Hydration</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid-2" style="margin-top: 20px;">
                     <div class="card">
-                        <h3>🥤 Pembagian Waktu Minum Air Harian</h3>
+                        <div class="card-header">
+                            <h3>🥤 Timeline Alokasi Air Putih Harian</h3>
+                        </div>
                         <ul class="schedule-list">
                             <li><span>05.15 (Bangun Tidur)</span> <strong>500 ml</strong></li>
                             <li><span>06.20 (Sebelum Sekolah)</span> <strong>300 ml</strong></li>
@@ -347,15 +475,17 @@
                     </div>
 
                     <div class="card">
-                        <h3>🥗 Makronutrisi & Meal Plan Standar</h3>
-                        <p>Target Kalori: <strong>2,100 – 2,300 kcal</strong> (Lean Bulk)</p>
-                        <ul class="bullet-list">
-                            <li><strong>Protein:</strong> 120g – 140g per hari</li>
-                            <li><strong>Sarapan:</strong> 3 Telur + 2 Roti Gandum + 1 Pisang (~25g Protein)</li>
-                            <li><strong>Makan Siang:</strong> 1.5 Centong Nasi + 150g Ayam/Daging/Ikan + Sayur (~40g Protein)</li>
-                            <li><strong>Pre-Workout:</strong> 1 Pisang / Roti Selai Kacang (~5g Protein)</li>
-                            <li><strong>Makan Malam:</strong> 1.5 Centong Nasi + 150g Ayam/Daging/Ikan + Sayur (~40g Protein)</li>
-                            <li><strong>Night Snack:</strong> Susu High Protein / 2 Telur / Tempe Rebus (~15g Protein)</li>
+                        <div class="card-header">
+                            <h3>🥗 Makronutrisi & Lean Bulking Meal Plan</h3>
+                        </div>
+                        <p class="subtext">Target Kalori: <strong>2,100 – 2,300 kcal</strong> (Lean Bulk Target BB 65-68kg)</p>
+                        <ul class="checklist-static">
+                            <li><strong>Protein Target:</strong> 120g – 140g per hari.</li>
+                            <li><strong>Sarapan Pagi:</strong> 3 Telur + 2 Roti Gandum + 1 Pisang (~25g Protein).</li>
+                            <li><strong>Makan Siang:</strong> 1.5 Centong Nasi + 150g Ayam/Daging/Ikan + Sayur (~40g Protein).</li>
+                            <li><strong>Pre-Workout:</strong> 1 Pisang / Roti Selai Kacang (~5g Protein).</li>
+                            <li><strong>Makan Malam:</strong> 1.5 Centong Nasi + 150g Ayam/Daging/Ikan + Sayur (~40g Protein).</li>
+                            <li><strong>Night Snack:</strong> Susu High Protein / 2 Telur / Tempe Rebus (~15g Protein).</li>
                         </ul>
                     </div>
                 </div>
@@ -365,40 +495,44 @@
             <section id="habits" class="page-section">
                 <div class="grid-2">
                     <div class="card">
-                        <h2>📊 Habit Tracker Harian</h2>
-                        <p>Centang kebiasaan harian yang telah diselesaikan:</p>
+                        <div class="card-header">
+                            <h2>📊 Habit Tracker Engine Harian</h2>
+                        </div>
+                        <p class="subtext">Progress disimpan otomatis ke dalam local storage browser.</p>
                         
                         <div class="habit-list">
                             <label class="habit-item">
                                 <input type="checkbox" id="habit_water" class="habit-checkbox">
-                                <span>Air Putih Minimal 3.8 Liter</span>
+                                <span class="habit-label">Air Putih Minimal 3.8 Liter - 4.0 Liter</span>
                             </label>
                             <label class="habit-item">
                                 <input type="checkbox" id="habit_skincare" class="habit-checkbox">
-                                <span>Basic Skincare 2x Sehari</span>
+                                <span class="habit-label">Basic Barrier Skincare 2x Sehari</span>
                             </label>
                             <label class="habit-item">
                                 <input type="checkbox" id="habit_masseter" class="habit-checkbox">
-                                <span>Pijat & Kompres Masseter 2x Sehari</span>
+                                <span class="habit-label">Pijat & Kompres Masseter 2x Sehari</span>
                             </label>
                             <label class="habit-item">
                                 <input type="checkbox" id="habit_workout" class="habit-checkbox">
-                                <span>Eksekusi Gym / Treadmill Rest Active</span>
+                                <span class="habit-label">Eksekusi Gym / Treadmill Rest Active</span>
                             </label>
                             <label class="habit-item">
                                 <input type="checkbox" id="habit_review" class="habit-checkbox">
-                                <span>Review Pelajaran Besok (45-60 Mnt)</span>
+                                <span class="habit-label">Review Pelajaran Besok (45-60 Mnt)</span>
                             </label>
                             <label class="habit-item">
                                 <input type="checkbox" id="habit_sleep" class="habit-checkbox">
-                                <span>Tidur Tepat Jam 22.00 WIB</span>
+                                <span class="habit-label">Disiplin Sleep Mode Jam 22.00 WIB</span>
                             </label>
                         </div>
                     </div>
 
                     <div class="card text-center">
-                        <h2>⏱️ Pomodoro Focus Timer</h2>
-                        <p>Gunakan untuk Sesi Belajar Mandiri & Latihan Soal SNBT</p>
+                        <div class="card-header center-header">
+                            <h2>⏱️ Pomodoro Focus Machine</h2>
+                        </div>
+                        <p class="subtext">Sistem timer terintegrasi untuk latihan soal & belajar mandiri.</p>
 
                         <div id="pomodoroDisplay" class="pomodoro-timer">25:00</div>
 
@@ -411,43 +545,51 @@
                 </div>
             </section>
 
-            <!-- SECTION 7: LAW PREP -->
+            <!-- SECTION 7: LAW PREPARATION -->
             <section id="law" class="page-section">
                 <div class="card">
-                    <h2>⚖️ Preparasi PTN Hukum & Vision Roadmap</h2>
-                    <p> Target Strategis: Lulus S1 Ilmu Hukum (Cumlaude) dari PTN Favorit (UI / UNSRI).</p>
+                    <div class="card-header">
+                        <h2>⚖️ Preparasi PTN Hukum & Vision Roadmap</h2>
+                    </div>
+                    <p>Target Utama: Lulus S1 Ilmu Hukum Cumlaude dari PTN Favorit (UI / UNSRI).</p>
                 </div>
 
                 <div class="grid-2">
                     <div class="card">
-                        <h3>🎯 Target Strategis 5 & 10 Tahun</h3>
+                        <div class="card-header">
+                            <h3>🎯 Target Strategis 5 & 10 Tahun</h3>
+                        </div>
                         <p><strong>Target 5 Tahun:</strong></p>
-                        <ul class="bullet-list">
+                        <ul class="bullet-list-custom">
                             <li>Lulus S1 Hukum Cumlaude dari UI / UNSRI.</li>
                             <li>Fisik ideal: 65–68 kg (Body Fat 12–14%).</li>
                             <li>Skor IELTS 7.5+ & Bahasa Jepang JLPT N3/N2.</li>
                             <li>Aktif Moot Court (Peradilan Semu) & Magang Law Firm.</li>
                         </ul>
-                        <p style="margin-top: 15px;"><strong>Target 10 Tahun:</strong></p>
-                        <ul class="bullet-list">
+                        <p style="margin-top: 20px;"><strong>Target 10 Tahun:</strong></p>
+                        <ul class="bullet-list-custom">
                             <li>Corporate Lawyer / Praktisi Hukum Internasional / Space Law Specialist.</li>
                             <li>Kemandirian finansial penuh & reputasi profesional solid.</li>
                         </ul>
                     </div>
 
                     <div class="card">
-                        <h3>🗺️ Life Roadmap Phases</h3>
-                        <div class="roadmap-phase">
-                            <h4>Fase 1 (Kelas 12 - Sekarang)</h4>
-                            <p>Focus Skin Barrier Repair, Bulking bersih bertahap, Nilai Rapot Semester 5 maksimal, Persiapan SNBT/PTN.</p>
+                        <div class="card-header">
+                            <h3>🗺️ Master Life Roadmap Phases</h3>
                         </div>
-                        <div class="roadmap-phase">
-                            <h4>Fase 2 (S1 Hukum)</h4>
-                            <p>Penguatan Akademik, Bahasa Asing, Kompetisi Moot Court, Networking Industri Hukum.</p>
-                        </div>
-                        <div class="roadmap-phase">
-                            <h4>Fase 3 (Karier & S2)</h4>
-                            <p>Top-tier Corporate Law Firm, Persiapan Beasiswa S2 Luar Negeri (Edinburgh / Jepang).</p>
+                        <div class="roadmap-container">
+                            <div class="roadmap-phase">
+                                <h4>Fase 1 (Kelas 12 - Sekarang)</h4>
+                                <p>Focus Skin Barrier Repair, Bulking bersih bertahap, Nilai Rapot Semester 5 maksimal, Persiapan SNBT/PTN.</p>
+                            </div>
+                            <div class="roadmap-phase">
+                                <h4>Fase 2 (S1 Hukum)</h4>
+                                <p>Penguatan Akademik, Bahasa Asing, Kompetisi Moot Court, Networking Industri Hukum.</p>
+                            </div>
+                            <div class="roadmap-phase">
+                                <h4>Fase 3 (Karier & S2)</h4>
+                                <p>Top-tier Corporate Law Firm, Persiapan Beasiswa S2 Luar Negeri (Edinburgh / Jepang).</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -456,6 +598,7 @@
         </main>
     </div>
 
+    <!-- System Core Engine Script Injection -->
     <script src="script.js"></script>
 </body>
 </html>
