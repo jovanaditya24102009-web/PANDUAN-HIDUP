@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * ULTIMATE LIFE OPERATING SYSTEM v3.0 - ENTERPRISE JS ENGINE (800+ LINES)
+ * ULTIMATE LIFE OPERATING SYSTEM v3.0 - ENTERPRISE JS ENGINE (FIXED VERSION)
  * Architecture: Modular Enterprise Architecture / Event-Driven State Engine
  * Features: LocalStorage Sync, Web Audio API, Haptic Engine, Dynamic Analytics,
  *           Complex Search/Filters, Interactive Timers, Workout Logs & Roadmap.
@@ -58,7 +58,7 @@ const LifeOS = {
         habits: {},
 
         // Gym Workout Execution State
-        workoutLogs: {}, // { '2026-07-26': [ { exercise: 'Incline DB Press', sets: 3, reps: 10, weightKg: 24 } ] }
+        workoutLogs: {},
 
         // Skincare & Masseter Progress
         skincareSteps: {},
@@ -260,10 +260,8 @@ const Utils = {
 document.addEventListener('DOMContentLoaded', () => {
     console.log(`%c[LifeOS Core] Booting Enterprise Engine v${LifeOS.version}...`, 'color: #3b82f6; font-weight: bold; font-size: 14px;');
 
-    // Request permissions
     Utils.requestNotificationPermission();
 
-    // Boot Up All Subsystem Engines
     NavigationEngine.init();
     SidebarDrawerEngine.init();
     RealtimeClockEngine.init();
@@ -318,7 +316,6 @@ const NavigationEngine = {
 
         LifeOS.activeSection = sectionId;
 
-        // Update Nav UI Active Class
         this.navLinks.forEach(link => {
             const isMatch = link.getAttribute('data-target') === sectionId;
             link.classList.toggle('active', isMatch);
@@ -329,7 +326,6 @@ const NavigationEngine = {
             }
         });
 
-        // Switch Visible Sections
         this.sections.forEach(section => {
             if (section.id === sectionId) {
                 section.classList.add('active');
@@ -340,7 +336,6 @@ const NavigationEngine = {
             }
         });
 
-        // Save State
         Utils.saveStorage('LAST_ACTIVE_SECTION', sectionId);
         SidebarDrawerEngine.close();
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -441,12 +436,12 @@ const RealtimeClockEngine = {
 
         const now = LifeOS.state.currentTime;
         const minutesOfDay = now.getHours() * 60 + now.getMinutes();
-        const dayOfWeek = now.getDay(); // 0: Minggu, 1: Senin, ..., 6: Sabtu
+        const dayOfWeek = now.getDay();
 
         let title = "Sesi Pemulihan & Istirahat Mode";
         let desc = "Waktu untuk regenerasi energi, hidrasi, dan istirahat optimal.";
 
-        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Weekday Execution Schedule
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
             if (minutesOfDay >= 300 && minutesOfDay < 315) {
                 title = "🌅 Morning Prime: Bangun Tidur & Hydration Boost";
                 desc = "Minum 500ml air putih langsung setelah bangun untuk rehidrasi organ tubuh.";
@@ -499,7 +494,7 @@ const RealtimeClockEngine = {
                 title = "😴 Deep Growth & Muscle Recovery Sleep";
                 desc = "Tidur nyenyak 7-8 jam untuk sekresi Growth Hormone & pemulihan jaringan otot.";
             }
-        } else { // Weekend Schedule
+        } else {
             title = "📅 Weekend Regeneration & Active Recovery";
             desc = "Latihan Lower Body / Rest Walk Treadmill 45m, evaluasi target mingguan.";
         }
@@ -510,7 +505,7 @@ const RealtimeClockEngine = {
 };
 
 /* ============================================================================
-   8. SCHOOL SCHEDULE & SEARCH/FILTER ENGINE
+   8. SCHOOL SCHEDULE & SEARCH/FILTER ENGINE (FIXED FOR WEEKENDS)
    ============================================================================ */
 
 const SchoolTimetableEngine = {
@@ -538,21 +533,30 @@ const SchoolTimetableEngine = {
     renderSchedule() {
         if (!this.tableBody) return;
 
-        const dayIndex = new Date().getDay();
+        let dayIndex = new Date().getDay(); // 0: Minggu, 1: Senin, ..., 6: Sabtu
+        let dayName = "Hari Ini";
+
+        // JIKA HARI SABTU (6) ATAU MINGGU (0), OTOMATIS TAMPILKAN JADWAL HARI SENIN (1)
+        if (dayIndex === 0 || dayIndex === 6) {
+            dayIndex = 1;
+            dayName = "Senin (Mode Pratinjau Akhir Pekan)";
+        }
+
         const todaySchedule = LifeOS.schoolData[dayIndex] || [];
 
-        if (todaySchedule.length === 0) {
-            this.tableBody.innerHTML = `
+        let html = '';
+        
+        // Tampilkan baris info jika diakses pas weekend
+        if (new Date().getDay() === 0 || new Date().getDay() === 6) {
+            html += `
                 <tr>
-                    <td colspan="4" style="text-align: center; padding: 28px; color: var(--text-muted);">
-                        🎉 Hari ini tidak ada Kegiatan Belajar Mengajar (Akhir Pekan / Libur Sekolah).
+                    <td colspan="4" style="text-align: center; background: rgba(59, 130, 246, 0.1); color: var(--color-primary); padding: 10px; font-size: 0.85rem; font-weight: bold;">
+                        📌 Akhir Pekan (Libur Sekolah) — Menampilkan Jadwal Hari SENIN
                     </td>
                 </tr>
             `;
-            return;
         }
 
-        let html = '';
         todaySchedule.forEach(item => {
             html += `
                 <tr class="schedule-row">
@@ -913,23 +917,18 @@ const LawPrepEngine = {
 const GlobalShortcutsEngine = {
     init() {
         document.addEventListener('keydown', (e) => {
-            // Alt + 1: Dashboard
             if (e.altKey && e.key === '1') {
                 EventBus.emit('navigation:request', 'dashboard');
             }
-            // Alt + 2: Sekolah
             else if (e.altKey && e.key === '2') {
                 EventBus.emit('navigation:request', 'school');
             }
-            // Alt + 3: Gym
             else if (e.altKey && e.key === '3') {
                 EventBus.emit('navigation:request', 'gym');
             }
-            // Alt + W: Add Water
             else if (e.altKey && (e.key === 'w' || e.key === 'W')) {
                 HydrationSystemEngine.addWater(250);
             }
-            // Alt + P: Toggle Pomodoro
             else if (e.altKey && (e.key === 'p' || e.key === 'P')) {
                 if (LifeOS.state.pomodoro.isRunning) {
                     PomodoroEngine.pause();
@@ -959,7 +958,7 @@ const TouchGestureEngine = {
             const diffX = e.changedTouches[0].screenX - this.startX;
             const diffY = Math.abs(e.changedTouches[0].screenY - this.startY);
 
-            if (diffY < 80) { // Horizontal Swipe Filter
+            if (diffY < 80) {
                 if (this.startX < 40 && diffX > 90) {
                     SidebarDrawerEngine.open();
                 }
