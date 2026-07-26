@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Life Operating System v3.0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="mobile-header">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <h3 style="font-size: 16px; font-weight: 800; color: var(--accent-color);">LIFE OS 3.0</h3>
+        <div></div>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h2>LIFE OS v3.0</h2>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a class="nav-link active" data-target="dashboard">
+                    <i class="fa-solid fa-chart-line"></i> Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-target="filosofi">
+                    <i class="fa-solid fa-compass"></i> Filosofi & Blueprint
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-target="glowup">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Glow Up Plan
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-target="harian">
+                    <i class="fa-solid fa-clock"></i> Jadwal Harian
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-target="sekolah">
+                    <i class="fa-solid fa-graduation-cap"></i> Jadwal Sekolah
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-target="gym">
+                    <i class="fa-solid fa-dumbbell"></i> Gym & Physical Plan
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-target="nutrisi-skincare">
+                    <i class="fa-solid fa-bottle-droplet"></i> Nutrisi & Skincare
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-target="tracker">
+                    <i class="fa-solid fa-list-check"></i> Habit Tracker
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+
+        <section id="dashboard" class="page-section active">
+            <div class="section-header">
+                <h1 class="section-title"><i class="fa-solid fa-house"></i> Executive Dashboard</h1>
+                <p class="section-subtitle">Pusat Kendali Harian Life Operating System v3.0</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-user"></i>
+                        <h3>Profil Eksekutif</h3>
+                    </div>
+                    <div class="photo-frame">
+                        <div class="photo-placeholder-text">
+                            <i class="fa-solid fa-image"></i>
+                            Letakkan foto profil kamu di sini<br>
+                            <code>&lt;img src="foto-profil.jpg" alt="Foto Profil"&gt;</code>
+                        </div>
+                    </div>
+                    <table style="margin-top: 10px;">
+                        <tr>
+                            <td><strong>Nama:</strong> Jov (Jovan)</td>
+                            <td><strong>Kelas:</strong> 12 SMA</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fisik:</strong> 170 cm / 60 kg</td>
+                            <td><strong>Target BB:</strong> 65 - 68 kg</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Fokus Utama:</strong> Skin Barrier Repair, Masseter Relief, Law Prep</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="card-header">
+                            <i class="fa-solid fa-bullseye"></i>
+                            <h3>Vision Statement</h3>
+                        </div>
+                        <div class="callout-box">
+                            "Menjadi pribadi yang tangguh secara mental, unggul secara intelektual di bidang hukum, memiliki penampilan fisik yang bersih, proporsional, tegap, dan percaya diri, serta siap bersaing di kancah profesional internasional."
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-header">
+                            <i class="fa-solid fa-fire"></i>
+                            <h3>My Why</h3>
+                        </div>
+                        <div class="callout-box" style="border-left-color: var(--warning-color);">
+                            "Kedisiplinan dan rasa lelah yang saya eksekusi hari ini adalah investasi berharga untuk kebebasan, performa puncak, dan kehormatan diri saya di masa depan."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-flag"></i>
+                    <h3>Ringkasan Roadmap Life OS</h3>
+                </div>
+                <div class="grid-3">
+                    <div class="card-sm">
+                        <span class="badge badge-accent">Fase 1 (Kelas 12)</span>
+                        <h4 style="margin: 10px 0 6px 0;">Akademik & Skin Barrier</h4>
+                        <p style="font-size: 13px; color: var(--text-secondary);">Rapot Semester 5 Maksimal, Bulking Bersih Bertahap, Pemulihan Kulit & Masseter.</p>
+                    </div>
+                    <div class="card-sm">
+                        <span class="badge badge-success">Fase 2 (S1 Hukum)</span>
+                        <h4 style="margin: 10px 0 6px 0;">UI / UNSRI Law School</h4>
+                        <p style="font-size: 13px; color: var(--text-secondary);">Cumlaude, Aktif Moot Court, IELTS 7.5+, JLPT N3/N2, Magang Law Firm.</p>
+                    </div>
+                    <div class="card-sm">
+                        <span class="badge badge-warning">Fase 3 (Karier & S2)</span>
+                        <h4 style="margin: 10px 0 6px 0;">Corporate / Space Law</h4>
+                        <p style="font-size: 13px; color: var(--text-secondary);">Top-Tier Corporate Law Firm & Beasiswa S2 Luar Negeri (Edinburgh/Jepang).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="filosofi" class="page-section">
+            <div class="section-header">
+                <h1 class="section-title"><i class="fa-solid fa-compass"></i> Filosofi & Strategic Blueprint</h1>
+                <p class="section-subtitle">Fondasi Pola Pikir dan Aturan Eksekusi Harian</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-brain"></i>
+                        <h3>Prinsip Utama Planner</h3>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">Stoikisme & Dikotomi Kendali</div>
+                            <div class="timeline-desc">Fokus 100% pada hal-hal yang berada di bawah kendalimu (disiplin harian, waktu tidur, asupan nutrisi, perawatan kulit, dan fokus belajar). Abaikan hal-hal di luar kendalimu.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-title">Kaizen (Continuous Improvement)</div>
+                            <div class="timeline-desc">Kemajuan 1% setiap hari melalui tindakan kecil yang konsisten jauh lebih berdampak daripada perubahan ekstrem yang tidak bertahan lama.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-title">Execution First</div>
+                            <div class="timeline-desc">Jadwal harian bersifat non-negotiable (kecuali ada keadaan darurat mendesak). Konsistensi adalah kunci keunggulan.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-crosshairs"></i>
+                        <h3>Tujuan Utama Sistem</h3>
+                    </div>
+                    <ul class="check-list">
+                        <li>
+                            <i class="fa-solid fa-check-circle"></i>
+                            Meredakan peradangan/ketegangan otot masseter dan memulihkan skin barrier secara total.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check-circle"></i>
+                            Membentuk massa otot ideal (target bertahap dari 60 kg menuju 65–68 kg lean muscle di tinggi 170 cm).
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check-circle"></i>
+                            Mengamankan nilai rapot Semester 5 secara maksimal untuk peluang seleksi PTN Hukum (UI / UNSRI).
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check-circle"></i>
+                            Membangun disiplin mental dan kebiasaan hidup kelas atas (high-performer).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="glowup" class="page-section">
+            <div class="section-header">
+                <h1 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Glow Up Master Plan (10 Pillars)</h1>
+                <p class="section-subtitle">Panduan Komprehensif Pengembangan Diri & Penampilan</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-face-smile"></i>
+                        <h3>Face & Skin Glow Up</h3>
+                    </div>
+                    <p class="desc-text">
+                        <strong>Face:</strong> Fokus utama pemulihan skin barrier (hindari eksfoliasi keras/peeling serum sementara waktu). Rutin relaksasi otot masseter untuk meredakan ketegangan dan pembengkakan area rahang.<br><br>
+                        <strong>Skin:</strong> Penggunaan sunscreen teratur setiap pagi sebelum sekolah. Segera mandi dan ganti pakaian setelah sesi gym untuk mencegah jerawat badan.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-child-reaching"></i>
+                        <h3>Body, Posture & Hair</h3>
+                    </div>
+                    <p class="desc-text">
+                        <strong>Hair:</strong> Keramas 2 hari sekali agar kelembapan alami kulit kepala tetap terjaga. Keringkan rambut ditepuk perlahan menggunakan handuk bersih.<br><br>
+                        <strong>Body & Posture:</strong> Jaga postur saat duduk dan berjalan (bahu ditarik ke belakang, dada terbuka). Terapkan progressive overload di tempat latihan.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-shirt"></i>
+                        <h3>Fashion & Confidence</h3>
+                    </div>
+                    <p class="desc-text">
+                        <strong>Fashion:</strong> Pilih pakaian fitted (pas di badan). Gunakan warna-warna netral (Hitam, Putih, Navy, Abu-abu, Olive) untuk kesan clean.<br><br>
+                        <strong>Public Speaking:</strong> Latih kontak mata yang tenang dan fokus. Bicara dengan artikulasi jelas, tidak terburu-buru, dan intonasi terkontrol.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-brain"></i>
+                        <h3>Mental & Social Glow Up</h3>
+                    </div>
+                    <p class="desc-text">
+                        <strong>Mental:</strong> Refleksi singkat sebelum tidur untuk mengurai stres. Batasi media sosial yang tidak relevan.<br><br>
+                        <strong>Social:</strong> Pendengar yang baik sebelum menanggapi. Jaga reputasi harian dengan bersikap sopan, tegas, dan tepat waktu.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="harian" class="page-section">
+            <div class="section-header">
+                <h1 class="section-title"><i class="fa-solid fa-clock"></i> Daily Routine & Time Management</h1>
+                <p class="section-subtitle">Struktur Waktu Harian Kelas 12 (Senin – Jumat)</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-sun"></i>
+                        <h3>Pagi & Sekolah</h3>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">05.00 – 05.15</div>
+                            <div class="timeline-title">Bangun Tidur & Hidrasi</div>
+                            <div class="timeline-desc">Minum Air Putih (500 ml) + Stretching Ringan.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">05.15 – 05.30</div>
+                            <div class="timeline-title">Morning Skincare & Masseter</div>
+                            <div class="timeline-desc">Gentle Cleanser + Moisturizer + Pijat Masseter Pagi (3 menit).</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">05.30 – 06.20</div>
+                            <div class="timeline-title">Mandi & Sarapan Protein</div>
+                            <div class="timeline-desc">Mandi, Sunscreen (2 ruas jari), Sarapan 3 Telur + Roti/Pisang + Air (300 ml).</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">07.00 – 15.45</div>
+                            <div class="timeline-title">Kegiatan Belajar Mengajar (KBM)</div>
+                            <div class="timeline-desc">Fokus belajar di kelas + Minum Air Putih bertahap total 2.25 Liter.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-moon"></i>
+                        <h3>Sore & Malam Hari</h3>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">16.15 – 18.00</div>
+                            <div class="timeline-title">Sesi Gym / Active Recovery</div>
+                            <div class="timeline-desc">Pre-workout snack + Eksekusi Jadwal Gym + Air Putih 750 ml.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">18.30 – 19.15</div>
+                            <div class="timeline-title">Makan Malam Tinggi Protein</div>
+                            <div class="timeline-desc">Ayam/Daging/Ikan + Nasi + Sayur.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">19.15 – 20.45</div>
+                            <div class="timeline-title">Sesi Fokus & Review Pelajaran</div>
+                            <div class="timeline-desc">Antisipasi pelajaran esok hari & Latihan Soal SNBT/TKA.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">20.45 – 22.00</div>
+                            <div class="timeline-title">Night Skincare, Recovery & Tidur</div>
+                            <div class="timeline-desc">Night Skincare + Warm Compress & Pijat Masseter (5 mnt) + Tidur Jam 22.00.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sekolah" class="page-section">
+            <div class="section-header">
+                <h1 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Jadwal Pelajaran Detail</h1>
+                <p class="section-subtitle">Jadwal Harian & Fokus Antisipasi Materi Malam Hari</p>
+            </div>
+
+            <div class="card">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Hari</th>
+                                <th>Jam Pelajaran</th>
+                                <th>Mata Pelajaran & Guru</th>
+                                <th>📌 Fokus Antisipasi Malam Hari</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>SENIN</strong></td>
+                                <td>
+                                    07.00 - 09.15<br>
+                                    09.15 - 11.30<br>
+                                    11.30 - 13.45<br>
+                                    13.45 - 15.45
+                                </td>
+                                <td>
+                                    Informatika (AR - 3 Jam)<br>
+                                    PJOK (RK - 3 Jam)<br>
+                                    Sejarah Wajib (PU - 2 Jam)<br>
+                                    PKN (EC - 2 Jam)
+                                </td>
+                                <td>
+                                    <strong>Minggu Malam:</strong> Dasar Informatika, Konsep PJOK, Sejarah, PKN.<br>
+                                    <strong>Senin Malam:</strong> B. Indonesia (RS), Mat (SG), B. Inggris (NH), Sejarah TL (SY).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>SELASA</strong></td>
+                                <td>
+                                    07.00 - 09.15<br>
+                                    09.15 - 10.45<br>
+                                    10.45 - 13.00<br>
+                                    13.00 - 15.45
+                                </td>
+                                <td>
+                                    B. Indonesia (RS - 3 Jam)<br>
+                                    Matematika (SG - 2 Jam)<br>
+                                    B. Inggris (NH - 3 Jam)<br>
+                                    Sejarah TL (SY - 3 Jam)
+                                </td>
+                                <td>
+                                    <strong>Selasa Malam:</strong> Pelajari Informatika (AR), Bahasa Jepang (IK), Seni Budaya (DA), Ekonomi (SI), dan PKWU (AS).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>RABU</strong></td>
+                                <td>
+                                    07.00 - 08.30<br>
+                                    08.30 - 10.00<br>
+                                    10.00 - 11.30<br>
+                                    11.30 - 13.45<br>
+                                    13.45 - 15.45
+                                </td>
+                                <td>
+                                    Informatika (AR - 2 Jam)<br>
+                                    B. Jepang (IK - 2 Jam)<br>
+                                    Seni Budaya (DA - 2 Jam)<br>
+                                    Ekonomi (SI - 2 Jam)<br>
+                                    PKWU (AS - 2 Jam)
+                                </td>
+                                <td>
+                                    <strong>Rabu Malam:</strong> Pelajari Agama (MD), Bahasa Jepang (IK), Bahasa Indonesia (RS), dan Sejarah TL (SY).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>KAMIS</strong></td>
+                                <td>
+                                    07.00 - 09.15<br>
+                                    09.15 - 10.45<br>
+                                    10.45 - 12.15<br>
+                                    12.15 - 15.45
+                                </td>
+                                <td>
+                                    Agama (MD - 3 Jam)<br>
+                                    B. Jepang (IK - 2 Jam)<br>
+                                    B. Indonesia (RS - 2 Jam)<br>
+                                    Sejarah TL (SY - 2 Jam)
+                                </td>
+                                <td>
+                                    <strong>Kamis Malam:</strong> Pelajari hitungan Ekonomi (SL) dan latihan soal Matematika (SG).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>JUMAT</strong></td>
+                                <td>
+                                    07.00 - 09.15<br>
+                                    09.15 - 10.45
+                                </td>
+                                <td>
+                                    Ekonomi (SL - 3 Jam)<br>
+                                    Matematika (SG - 2 Jam)
+                                </td>
+                                <td>
+                                    <strong>Jumat Malam:</strong> Review total nilai mingguan, rapikan catatan sekolah, dan istirahat.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="gym" class="page-section">
+            <div class="section-header">
+                <h1 class="section-title"><i class="fa-solid fa-dumbbell"></i> Gym & Hypertrophy Plan</h1>
+                <p class="section-subtitle">Program Latihan 6-Day Split Routine</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="photo-frame">
+                    <div class="photo-placeholder-text">
+                        <i class="fa-solid fa-image"></i>
+                        Foto Progress Gym / Physique Kamu<br>
+                        <code>&lt;img src="gym-progress.jpg" alt="Progress"&gt;</code>
+                    </div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder-text">
+                        <i class="fa-solid fa-image"></i>
+                        Foto Motivasi Gym / Workouts<br>
+                        <code>&lt;img src="gym-motivation.jpg" alt="Motivation"&gt;</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-child"></i>
+                        <h3>SENIN: PUSH DAY</h3>
+                    </div>
+                    <ul class="gym-list">
+                        <li>• Incline DB Press (3x8-12)</li>
+                        <li>• Flat Bench / Machine Press (3x8-10)</li>
+                        <li>• DB Shoulder Press (3x10-12)</li>
+                        <li>• Lateral Raises (4x12-15)</li>
+                        <li>• Triceps Rope Pushdown (3x12-15)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-person-walking"></i>
+                        <h3>SELASA: PULL DAY</h3>
+                    </div>
+                    <ul class="gym-list">
+                        <li>• Lat Pulldown / Pull-ups (3x8-12)</li>
+                        <li>• Seated Cable Row (3x10-12)</li>
+                        <li>• Face Pulls (3x15)</li>
+                        <li>• Barbell / DB Bicep Curls (3x10-12)</li>
+                        <li>• Hanging Leg Raises (3x15)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-person-running"></i>
+                        <h3>RABU: LEG DAY</h3>
+                    </div>
+                    <ul class="gym-list">
+                        <li>• Barbell Squats / Leg Press (4x8-10)</li>
+                        <li>• Romanian Deadlift / Curls (3x10-12)</li>
+                        <li>• Leg Extensions (3x12-15)</li>
+                        <li>• Calf Raises (4x15-20)</li>
+                        <li>• Wrist Curls / Forearms (3x15)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <h3>KAMIS: REST DAY</h3>
+                    </div>
+                    <p class="desc-text">
+                        • Treadmill Incline Walk 30-45 Mnt (Speed 4.5-5.0, Incline 8-10%)<br>
+                        • Full Body Dynamic Stretch (15 Mnt)
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <h3>JUMAT: UPPER DAY</h3>
+                    </div>
+                    <ul class="gym-list">
+                        <li>• Incline DB Press (3x10)</li>
+                        <li>• Lat Pulldown (3x10)</li>
+                        <li>• DB Shoulder Press (3x10)</li>
+                        <li>• DB / Cable Flyes (3x12)</li>
+                        <li>• Superset Biceps & Triceps (3x12)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h3>SABTU: LOWER DAY</h3>
+                    </div>
+                    <ul class="gym-list">
+                        <li>• Leg Press / Goblet Squat (4x10-12)</li>
+                        <li>• Lying Leg Curls (3x12)</li>
+                        <li>• Walking Lunges (3x12/kaki)</li>
+                        <li>• Plank (3x60 Detik)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="nutrisi-skincare" class="page-section">
+            <div class="section-header">
+                <h1 class="section-title"><i class="fa-solid fa-bottle-droplet"></i> Nutrisi, Skincare & Masseter Plan</h1>
+                <p class="section-subtitle">Panduan Asupan Nutrisi, Pemulihan Kulit & Relaksasi Rahang</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-utensils"></i>
+                        <h3>Macro & Meal Plan</h3>
+                    </div>
+                    <p class="sub-text">Target: 2,100–2,300 kcal | Protein: 120–140g/hari</p>
+                    <table style="font-size: 13px;">
+                        <tr>
+                            <td><strong>Sarapan (06.00)</strong></td>
+                            <td>3 Telur + 2 Roti Gandum + Pisang (~25g P)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Siang (12.00)</strong></td>
+                            <td>Nasi + 150g Ayam/Daging + Sayur (~40g P)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pre-Workout (16.15)</strong></td>
+                            <td>1 Pisang / Roti Selai Kacang (~5g P)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Malam (18.30)</strong></td>
+                            <td>Nasi + 150g Ayam/Ikan + Sayur (~40g P)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Snack (21.00)</strong></td>
+                            <td>Susu High Protein / Telur Rebus (~15g P)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-spa"></i>
+                        <h3>Barrier Repair & Masseter Relief</h3>
+                    </div>
+                    <div class="desc-text">
+                        <span class="badge badge-warning" style="margin-bottom: 8px;">Prinsip Barrier</span>
+                        <p style="margin-bottom: 12px;">Hentikan sementara peeling serum, AHA/BHA tinggi, & Retinol sampai kulit pulih sepenuhnya.</p>
+
+                        <span class="badge badge-accent" style="margin-bottom: 8px;">Rutinitas</span>
+                        <p style="margin-bottom: 12px;"><strong>Pagi:</strong> Gentle Wash + Barrier Moisturizer + Sunscreen 2 Ruas Jari.<br><strong>Malam:</strong> Gentle Wash + Barrier Moisturizer Tebal.</p>
+
+                        <span class="badge badge-success" style="margin-bottom: 8px;">Pijat Masseter (2x Sehari)</span>
+                        <p>Kompres hangat 3-5 mnt -> Tekan lembut dengan buku jari -> Gerakan memutar 12-15x -> Stretching rahang huruf "O".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tracker" class="page-section">
+            <div class="section-header">
+                <h1 class="section-title"><i class="fa-solid fa-list-check"></i> Interactive Habit Tracker</h1>
+                <p class="section-subtitle">Centang kebiasaan harianmu. Progres akan tersimpan otomatis di browser HP/Laptop kamu.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h3>Checklist Kebiasaan Harian</h3>
+                </div>
+                
+                <ul class="habit-list">
+                    <li class="habit-item">
+                        <label>
+                            <input type="checkbox" class="habit-checkbox" id="habit1">
+                            Minum Air Putih Minimal 3.8 - 4.0 Liter
+                        </label>
+                        <span class="badge badge-accent">3.8L</span>
+                    </li>
+                    <li class="habit-item">
+                        <label>
+                            <input type="checkbox" class="habit-checkbox" id="habit2">
+                            Basic Skincare 2x Sehari (Pagi & Malam)
+                        </label>
+                        <span class="badge badge-success">Skincare</span>
+                    </li>
+                    <li class="habit-item">
+                        <label>
+                            <input type="checkbox" class="habit-checkbox" id="habit3">
+                            Pijat Masseter & Kompres Hangat 2x Sehari
+                        </label>
+                        <span class="badge badge-warning">Masseter</span>
+                    </li>
+                    <li class="habit-item">
+                        <label>
+                            <input type="checkbox" class="habit-checkbox" id="habit4">
+                            Eksekusi Jadwal Gym / Active Recovery Cardio
+                        </label>
+                        <span class="badge badge-accent">Gym</span>
+                    </li>
+                    <li class="habit-item">
+                        <label>
+                            <input type="checkbox" class="habit-checkbox" id="habit5">
+                            Review & Antisipasi Pelajaran Esok Hari (45-60 Mnt)
+                        </label>
+                        <span class="badge badge-success">Belajar</span>
+                    </li>
+                    <li class="habit-item">
+                        <label>
+                            <input type="checkbox" class="habit-checkbox" id="habit6">
+                            Tidur Konsisten Jam 22.00 (7 Jam Tidur)
+                        </label>
+                        <span class="badge badge-warning">Recovery</span>
+                    </li>
+                </ul>
+
+                <button id="resetHabits" class="btn-reset">
+                    Reset Checklist Harian
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
