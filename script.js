@@ -1,7 +1,7 @@
 /**
- * Ultimate Life OS v3.0 - Advanced Script
- * Features: Navigation, Real-time Routine Tracker, Habit Analytics,
- * Pomodoro Focus Timer, Search Filter, Data Backup/Restore.
+ * Ultimate Life OS v3.0 - Anonymized & Safe Public Version
+ * Features: SPA Navigation, Routine Tracker, Dynamic Habit Progress,
+ * Focus Pomodoro Timer, Quick Search, and Anonymous Data Structure.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. SINGLE PAGE APPLICATION (SPA) NAVIGATION & PAGE ANIMATIONS
+   1. NAVIGATION & PAGE ANIMATIONS
    ========================================================================== */
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
@@ -27,11 +27,11 @@ function initNavigation() {
             const targetId = link.getAttribute('data-target');
             if (!targetId) return;
 
-            // Update Active Link State
+            // Active State Toggle
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
 
-            // Switch Active Section with Smooth Fade
+            // Switch Section
             pageSections.forEach(section => {
                 section.classList.remove('active');
                 if (section.id === targetId) {
@@ -40,7 +40,7 @@ function initNavigation() {
                 }
             });
 
-            // Auto Close Mobile Sidebar on selection
+            // Auto Close Mobile Sidebar
             const sidebar = document.getElementById('sidebar');
             if (window.innerWidth <= 900 && sidebar) {
                 sidebar.classList.remove('active');
@@ -62,7 +62,6 @@ function initMobileSidebar() {
             sidebar.classList.toggle('active');
         });
 
-        // Close sidebar when clicking outside on mobile
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 900 && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
                 sidebar.classList.remove('active');
@@ -72,7 +71,7 @@ function initMobileSidebar() {
 }
 
 /* ==========================================================================
-   3. ADVANCED HABIT TRACKER (WITH PROGRESS BAR & LOCALSTORAGE)
+   3. HABIT TRACKER WITH ANALYTICS PROGRESS BAR
    ========================================================================== */
 function initHabitTracker() {
     const checkboxes = document.querySelectorAll('.habit-checkbox');
@@ -81,7 +80,7 @@ function initHabitTracker() {
 
     if (!checkboxes.length) return;
 
-    // Dynamically Inject Analytics Card if not exists
+    // Inject Analytics Card
     if (trackerSection && !document.getElementById('habitAnalyticsCard')) {
         const analyticsHtml = `
             <div class="card" id="habitAnalyticsCard" style="margin-bottom: 20px;">
@@ -95,7 +94,7 @@ function initHabitTracker() {
                     </div>
                     <span id="habitPercentText" style="font-weight: 800; font-size: 16px; color: var(--accent-color); min-width: 45px;">0%</span>
                 </div>
-                <p id="habitSummaryText" style="font-size: 13px; color: var(--text-secondary);">Selesaikan semua target harianmu untuk menjaga konsistensi!</p>
+                <p id="habitSummaryText" style="font-size: 13px; color: var(--text-secondary);">Selesaikan target harian untuk menjaga konsistensi!</p>
             </div>
         `;
         const habitCard = trackerSection.querySelector('.card');
@@ -104,7 +103,6 @@ function initHabitTracker() {
         }
     }
 
-    // Load Saved States & Update UI
     function updateProgress() {
         let completedCount = 0;
         checkboxes.forEach(box => {
@@ -122,13 +120,13 @@ function initHabitTracker() {
         if (percentText) percentText.textContent = `${percentage}%`;
         if (summaryText) {
             if (percentage === 100) {
-                summaryText.textContent = "🔥 Luar biasa! Semua habit harian telah tuntas dieksekusi!";
+                summaryText.textContent = "🔥 Luar biasa! Semua target hari ini tuntas dieksekusi!";
                 summaryText.style.color = "var(--success-color)";
             } else if (percentage >= 50) {
-                summaryText.textContent = "⚡ Bagus! Kamu sudah menyelesaikan lebih dari separuh target hari ini.";
+                summaryText.textContent = "⚡ Bagus! Lebih dari separuh target harian telah selesai.";
                 summaryText.style.color = "var(--accent-color)";
             } else {
-                summaryText.textContent = "Selesaikan semua target harianmu untuk menjaga konsistensi!";
+                summaryText.textContent = "Selesaikan target harian untuk menjaga konsistensi!";
                 summaryText.style.color = "var(--text-secondary)";
             }
         }
@@ -138,17 +136,19 @@ function initHabitTracker() {
         const savedState = localStorage.getItem(box.id);
         if (savedState === 'true') {
             box.checked = true;
-            box.closest('.habit-item').classList.add('completed');
+            if (box.closest('.habit-item')) {
+                box.closest('.habit-item').classList.add('completed');
+            }
         }
 
         box.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
             localStorage.setItem(e.target.id, isChecked);
             
-            if (isChecked) {
-                e.target.closest('.habit-item').classList.add('completed');
-            } else {
-                e.target.closest('.habit-item').classList.remove('completed');
+            const parentItem = e.target.closest('.habit-item');
+            if (parentItem) {
+                if (isChecked) parentItem.classList.add('completed');
+                else parentItem.classList.remove('completed');
             }
             updateProgress();
         });
@@ -156,14 +156,15 @@ function initHabitTracker() {
 
     updateProgress();
 
-    // Reset Tracker
     if (resetButton) {
         resetButton.addEventListener('click', () => {
-            if (confirm('Apakah kamu yakin ingin mereset checklist kebiasaan hari ini?')) {
+            if (confirm('Apakah kamu yakin ingin mereset checklist hari ini?')) {
                 checkboxes.forEach(box => {
                     box.checked = false;
                     localStorage.removeItem(box.id);
-                    box.closest('.habit-item').classList.remove('completed');
+                    if (box.closest('.habit-item')) {
+                        box.closest('.habit-item').classList.remove('completed');
+                    }
                 });
                 updateProgress();
             }
@@ -172,7 +173,7 @@ function initHabitTracker() {
 }
 
 /* ==========================================================================
-   4. REAL-TIME ACTIVITY NOTIFIER (BERDASARKAN JAM SISTEM SEKARANG)
+   4. ANONYMOUS REAL-TIME ROUTINE NOTIFIER
    ========================================================================== */
 function initCurrentActivityNotifier() {
     const dashboard = document.getElementById('dashboard');
@@ -182,9 +183,9 @@ function initCurrentActivityNotifier() {
         <div class="card" id="realtimeActivityCard" style="border-left: 4px solid var(--accent-color); margin-bottom: 24px;">
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
                 <div>
-                    <span class="badge badge-accent" id="liveClockBadge">LIVE CLOCK</span>
-                    <h3 id="currentActivityTitle" style="font-size: 18px; margin-top: 6px;">Status Rutinitas Saat Ini</h3>
-                    <p id="currentActivityDesc" style="font-size: 13px; color: var(--text-secondary);">Mengecek jadwal harian...</p>
+                    <span class="badge badge-accent" id="liveClockBadge">STATUS REAL-TIME</span>
+                    <h3 id="currentActivityTitle" style="font-size: 18px; margin-top: 6px;">Jadwal Rutinitas</h3>
+                    <p id="currentActivityDesc" style="font-size: 13px; color: var(--text-secondary);">Memuat status kegiatan...</p>
                 </div>
                 <div style="text-align: right;">
                     <span id="digitalClock" style="font-size: 24px; font-weight: 800; font-family: monospace; color: var(--accent-color);">00:00:00</span>
@@ -193,7 +194,7 @@ function initCurrentActivityNotifier() {
         </div>
     `;
 
-    const firstGrid = dashboard.querySelector('.grid-2');
+    const firstGrid = dashboard.querySelector('.grid-2') || dashboard.querySelector('.card');
     if (firstGrid) {
         firstGrid.insertAdjacentHTML('beforebegin', bannerHtml);
     }
@@ -212,34 +213,31 @@ function initCurrentActivityNotifier() {
         const descEl = document.getElementById('currentActivityDesc');
         if (!titleEl || !descEl) return;
 
-        // Routine Logic (Minutes from 00:00)
-        if (currentTimeVal >= 300 && currentTimeVal < 315) { // 05.00 - 05.15
-            titleEl.textContent = "🌅 Bangun Tidur & Hidrasi";
-            descEl.textContent = "Minum 500ml air putih + stretching ringan.";
-        } else if (currentTimeVal >= 315 && currentTimeVal < 330) { // 05.15 - 05.30
-            titleEl.textContent = "✨ Morning Skincare & Masseter";
-            descEl.textContent = "Gentle Cleanser + Moisturizer + Pijat Masseter Pagi.";
+        // General Time Blocks (Anonymized Routine)
+        if (currentTimeVal >= 300 && currentTimeVal < 330) { // 05.00 - 05.30
+            titleEl.textContent = "🌅 Morning Preparation";
+            descEl.textContent = "Bangun tidur, hidrasi air putih, & perawatan pagi.";
         } else if (currentTimeVal >= 330 && currentTimeVal < 420) { // 05.30 - 07.00
-            titleEl.textContent = "🍳 Mandi, Sunscreen & Sarapan";
-            descEl.textContent = "Sarapan tinggi protein, persiapkan perlengkapan sekolah.";
+            titleEl.textContent = "🍳 Sarapan & Persiapan Harian";
+            descEl.textContent = "Sarapan tinggi nutrisi, cek jadwal & keberangkatan.";
         } else if (currentTimeVal >= 420 && currentTimeVal < 945) { // 07.00 - 15.45
-            titleEl.textContent = "📚 Sesi KBM / Sekolah";
-            descEl.textContent = "Fokus materi di kelas. Jaga asupan air putih teratur.";
+            titleEl.textContent = "📚 Sesi Akademik / Sekolah";
+            descEl.textContent = "Fokus materi di kelas dan jaga asupan hidrasi harian.";
         } else if (currentTimeVal >= 975 && currentTimeVal < 1080) { // 16.15 - 18.00
-            titleEl.textContent = "🏋️ Sesi Gym / Active Recovery";
-            descEl.textContent = "Eksekusi target workout hari ini secara maksimal!";
+            titleEl.textContent = "🏋️ Sesi Olahraga / Fitnes";
+            descEl.textContent = "Eksekusi target latihan harian & pemulihan tubuh.";
         } else if (currentTimeVal >= 1110 && currentTimeVal < 1155) { // 18.30 - 19.15
-            titleEl.textContent = "🍱 Makan Malam Tinggi Protein";
-            descEl.textContent = "Asupan nutrisi untuk pemulihan dan sintesis otot.";
+            titleEl.textContent = "🍱 Makan Malam Nutrisi";
+            descEl.textContent = "Pemulihan energi dan asupan nutrisi seimbang.";
         } else if (currentTimeVal >= 1155 && currentTimeVal < 1245) { // 19.15 - 20.45
-            titleEl.textContent = "📖 Review Pelajaran & Belajar";
-            descEl.textContent = "Antisipasi jadwal sekolah esok hari / Latihan Soal.";
+            titleEl.textContent = "📖 Sesi Belajar & Review Pelajaran";
+            descEl.textContent = "Antisipasi materi besok & evaluasi soal.";
         } else if (currentTimeVal >= 1245 && currentTimeVal < 1320) { // 20.45 - 22.00
-            titleEl.textContent = "🌙 Night Routine & Masseter Relief";
-            descEl.textContent = "Skincare malam, kompres hangat masseter, persiapan tidur.";
+            titleEl.textContent = "🌙 Night Routine & Self-Care";
+            descEl.textContent = "Skincare malam, relaksasi otot, persiapan tidur.";
         } else {
-            titleEl.textContent = "😴 Sesi Istirahat & Sleep Recovery";
-            descEl.textContent = "Tubuh sedang dalam fase regenerasi sel dan pemulihan otot.";
+            titleEl.textContent = "😴 Waktu Istirahat (Sleep Recovery)";
+            descEl.textContent = "Fase pemulihan fisik & pikiran untuk performa maksimal esok hari.";
         }
     }
 
@@ -248,10 +246,10 @@ function initCurrentActivityNotifier() {
 }
 
 /* ==========================================================================
-   5. POMODORO FOCUS TIMER FOR EVENING STUDY SESSION
+   5. FOCUS POMODORO TIMER
    ========================================================================== */
 function initPomodoroTimer() {
-    const sekolahSection = document.getElementById('sekolah');
+    const sekolahSection = document.getElementById('sekolah') || document.getElementById('dashboard');
     if (!sekolahSection) return;
 
     const timerHtml = `
@@ -260,12 +258,12 @@ function initPomodoroTimer() {
                 <i class="fa-solid fa-stopwatch"></i>
                 <h3>Focus Study Timer (Pomodoro)</h3>
             </div>
-            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">Gunakan timer ini saat melakukan review pelajaran malam hari.</p>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">Gunakan timer 25 menit ini saat sesi belajar malam hari.</p>
             <div id="pomodoroDisplay" style="font-size: 48px; font-weight: 800; font-family: monospace; color: var(--accent-color); margin-bottom: 16px;">25:00</div>
             <div style="display: flex; justify-content: center; gap: 12px;">
-                <button id="startTimerBtn" class="btn-reset" style="background: rgba(34, 197, 94, 0.2); color: var(--success-color); border-color: var(--success-color);">Start</button>
-                <button id="pauseTimerBtn" class="btn-reset" style="background: rgba(234, 179, 8, 0.2); color: var(--warning-color); border-color: var(--warning-color);">Pause</button>
-                <button id="resetTimerBtn" class="btn-reset">Reset</button>
+                <button id="startTimerBtn" class="btn-reset" style="background: rgba(34, 197, 94, 0.2); color: var(--success-color); border-color: var(--success-color); cursor: pointer;">Start</button>
+                <button id="pauseTimerBtn" class="btn-reset" style="background: rgba(234, 179, 8, 0.2); color: var(--warning-color); border-color: var(--warning-color); cursor: pointer;">Pause</button>
+                <button id="resetTimerBtn" class="btn-reset" style="cursor: pointer;">Reset</button>
             </div>
         </div>
     `;
@@ -320,7 +318,7 @@ function initPomodoroTimer() {
 }
 
 /* ==========================================================================
-   6. QUICK SEARCH / FILTER ON TABLES AND LISTS
+   6. QUICK SEARCH FOR TABLES & LISTS
    ========================================================================== */
 function initGlobalSearch() {
     const sekolahSection = document.getElementById('sekolah');
@@ -331,7 +329,7 @@ function initGlobalSearch() {
 
     const searchInputHtml = `
         <div style="margin-bottom: 16px;">
-            <input type="text" id="scheduleSearchInput" placeholder="🔍 Cari mata pelajaran, guru, atau hari..." 
+            <input type="text" id="scheduleSearchInput" placeholder="🔍 Cari mata pelajaran, jadwal, atau kata kunci..." 
                 style="width: 100%; padding: 12px 16px; border-radius: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); font-size: 14px; outline: none;">
         </div>
     `;
@@ -345,11 +343,7 @@ function initGlobalSearch() {
 
         rows.forEach(row => {
             const text = row.textContent.toLowerCase();
-            if (text.includes(filter)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
+            row.style.display = text.includes(filter) ? '' : 'none';
         });
     });
 }
