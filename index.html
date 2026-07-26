@@ -2,206 +2,478 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Dashboard & Life OS</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome Icons -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Life OS - Executive Performance Dashboard</title>
+    <!-- Font Awesome Pro Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- OVERLAY UNTUK MOBILE MENU -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
     <!-- SIDEBAR NAVIGATION -->
-    <nav id="sidebar">
+    <aside id="sidebar" class="sidebar">
         <div class="sidebar-header">
-            <i class="fa-solid fa-cube logo-icon"></i>
-            <h2>Life OS</h2>
+            <div class="brand-logo">
+                <i class="fa-solid fa-cube"></i>
+                <span>Life OS <small>v3.5 Pro</small></span>
+            </div>
+            <button id="closeSidebarBtn" class="close-sidebar-btn" aria-label="Tutup Menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
 
-        <ul class="nav-links">
-            <li>
-                <a href="#" class="nav-link active" data-target="dashboard">
-                    <i class="fa-solid fa-house"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link" data-target="sekolah">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <span>Jadwal Akademik</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link" data-target="tracker">
-                    <i class="fa-solid fa-check-double"></i>
-                    <span>Habit Tracker</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link" data-target="fitness">
-                    <i class="fa-solid fa-dumbbell"></i>
-                    <span>Workout Plan</span>
-                </a>
-            </li>
-        </ul>
+        <nav class="sidebar-nav">
+            <div class="nav-section-title">UTAMA</div>
+            <a href="#" class="nav-link active" data-target="dashboard">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-link" data-target="sekolah">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Jadwal Pelajaran</span>
+            </a>
+
+            <div class="nav-section-title">PRODUKTIVITAS</div>
+            <a href="#" class="nav-link" data-target="tracker">
+                <i class="fa-solid fa-square-check"></i>
+                <span>Habit Tracker</span>
+            </a>
+            <a href="#" class="nav-link" data-target="pomodoro">
+                <i class="fa-solid fa-stopwatch"></i>
+                <span>Focus Pomodoro</span>
+            </a>
+
+            <div class="nav-section-title">HEALTH & WELLNESS</div>
+            <a href="#" class="nav-link" data-target="fitness">
+                <i class="fa-solid fa-dumbbell"></i>
+                <span>Workout Routine</span>
+            </a>
+            <a href="#" class="nav-link" data-target="skincare">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>Skincare Regimen</span>
+            </a>
+        </nav>
 
         <div class="sidebar-footer">
-            <span class="user-badge"><i class="fa-solid fa-user-shield"></i> Anonymous Mode</span>
+            <div class="user-status-card">
+                <div class="status-indicator online"></div>
+                <div class="user-info">
+                    <span class="user-title">Kelas 11 Student</span>
+                    <span class="user-sub">Target: Hukum / Legal Studies</span>
+                </div>
+            </div>
         </div>
-    </nav>
+    </aside>
 
-    <!-- MAIN CONTENT AREA -->
-    <main class="main-content">
-        <!-- TOP MOBILE BAR -->
-        <header class="mobile-header">
-            <button id="menuToggle"><i class="fa-solid fa-bars"></i></button>
-            <h1>Personal Dashboard</h1>
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper">
+
+        <!-- TOP BAR / HEADER (Khusus Mobile & iPhone Bar) -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button id="menuToggle" class="menu-toggle-btn" aria-label="Buka Menu">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+                <div class="page-title-display">
+                    <h1 id="currentPageTitle">Dashboard</h1>
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <div class="live-clock-mini" id="miniClock">00:00</div>
+            </div>
         </header>
 
-        <!-- 1. DASHBOARD SECTION -->
-        <section id="dashboard" class="page-section active">
-            <div class="welcome-banner card">
-                <h2>Selamat Datang Kembali 👋</h2>
-                <p>Pantau rutinitas, target akademik, dan progres harianmu di satu tempat.</p>
-            </div>
+        <!-- MAIN CONTENT AREA -->
+        <main class="content-container">
 
-            <div class="grid-2">
-                <!-- Profile Card -->
+            <!-- 1. DASHBOARD SECTION -->
+            <section id="dashboard" class="page-section active">
+                <div class="welcome-card card">
+                    <div class="welcome-text">
+                        <h2>Selamat Datang Kembali 👋</h2>
+                        <p>Pantau seluruh ritme harian, target akademik, dan progres fisikmu secara terstruktur.</p>
+                    </div>
+                    <div class="quick-pills">
+                        <span class="pill"><i class="fa-solid fa-bolt"></i> Peak Performance Mode</span>
+                        <span class="pill"><i class="fa-solid fa-shield-halved"></i> Barrier Protection Active</span>
+                    </div>
+                </div>
+
+                <!-- REALTIME ACTIVITY CARD -->
+                <div class="card realtime-card">
+                    <div class="realtime-header">
+                        <span class="badge badge-pulse"><i class="fa-solid fa-circle-dot"></i> REAL-TIME STATUS</span>
+                        <div class="digital-clock" id="digitalClock">00:00:00</div>
+                    </div>
+                    <div class="realtime-body">
+                        <h3 id="currentActivityTitle">Memuat Status...</h3>
+                        <p id="currentActivityDesc">Menganalisis jadwal saat ini...</p>
+                    </div>
+                </div>
+
+                <div class="grid-layout grid-2">
+                    <!-- Profile Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-user-gear"></i>
+                            <h3>Profil & Parameter Utama</h3>
+                        </div>
+                        <ul class="styled-list">
+                            <li><span class="list-label">Pendidikan:</span> <span class="list-value">Siswa Kelas 11 (Fase F)</span></li>
+                            <li><span class="list-label">Target Akademik:</span> <span class="list-value">Fakultas Hukum (Law Major)</span></li>
+                            <li><span class="list-label">Height & Weight Target:</span> <span class="list-value">174 cm | 58–60 kg (Lean Bulk)</span></li>
+                            <li><span class="list-label">Personality Type:</span> <span class="list-value">Analitis & Strategic Focus</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Focus Harian -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-bullseye"></i>
+                            <h3>Fokus Eksekusi Hari Ini</h3>
+                        </div>
+                        <ul class="styled-list">
+                            <li><i class="fa-regular fa-circle-check accent-icon"></i> Selesaikan 100% Habit Tracker Harian</li>
+                            <li><i class="fa-regular fa-circle-check accent-icon"></i> Review & Pemahaman Pelajaran Sekolah</li>
+                            <li><i class="fa-regular fa-circle-check accent-icon"></i> Eksekusi Sesi Gym Push / Pull / Legs</li>
+                            <li><i class="fa-regular fa-circle-check accent-icon"></i> Jaga Skincare Routine Pagi & Malam</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. JADWAL PELAJARAN SECTION -->
+            <section id="sekolah" class="page-section">
+                <div class="card">
+                    <div class="card-header flex-between">
+                        <div>
+                            <i class="fa-solid fa-calendar-week"></i>
+                            <h3>Jadwal Pelajaran Kelas 11</h3>
+                        </div>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="scheduleSearchInput" placeholder="Cari mata pelajaran, hari, atau kode guru...">
+                    </div>
+                    
+                    <div class="table-wrapper">
+                        <table class="data-table" id="scheduleTable">
+                            <thead>
+                                <tr>
+                                    <th>Hari</th>
+                                    <th>Jam</th>
+                                    <th>Mata Pelajaran</th>
+                                    <th>Ruangan</th>
+                                    <th>Kode Guru</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="day-tag mon">Senin</span></td>
+                                    <td>07.00 - 08.30</td>
+                                    <td><strong>Upacara / Wali Kelas</strong></td>
+                                    <td>Lapangan / R. Kelas</td>
+                                    <td>WK-11</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag mon">Senin</span></td>
+                                    <td>08.30 - 10.00</td>
+                                    <td><strong>Bahasa Indonesia</strong></td>
+                                    <td>Ruang Kelas F4.2</td>
+                                    <td>BIN-01</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag mon">Senin</span></td>
+                                    <td>10.15 - 12.30</td>
+                                    <td><strong>Matematika Tingkat Lanjut</strong></td>
+                                    <td>Ruang Kelas F4.2</td>
+                                    <td>MTK-04</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag mon">Senin</span></td>
+                                    <td>13.15 - 15.30</td>
+                                    <td><strong>Sejarah Indonesia & Dunia</strong></td>
+                                    <td>Ruang Kelas F4.2</td>
+                                    <td>SJR-02</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag tue">Selasa</span></td>
+                                    <td>07.00 - 09.15</td>
+                                    <td><strong>Sosiologi / Hukum Dasar</strong></td>
+                                    <td>Ruang Kelas F4.2</td>
+                                    <td>SOS-01</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag tue">Selasa</span></td>
+                                    <td>09.30 - 12.00</td>
+                                    <td><strong>Bahasa Inggris (English Core)</strong></td>
+                                    <td>Ruang Kelas F4.2</td>
+                                    <td>BIG-03</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag tue">Selasa</span></td>
+                                    <td>13.00 - 15.30</td>
+                                    <td><strong>Ekonomi & Pembangunan</strong></td>
+                                    <td>Ruang Kelas F4.2</td>
+                                    <td>EKO-02</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag wed">Rabu</span></td>
+                                    <td>07.00 - 09.15</td>
+                                    <td><strong>Pendidikan Pancasila & Kewarganegaraan</strong></td>
+                                    <td>Ruang Kelas F4.2</td>
+                                    <td>PPN-01</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag wed">Rabu</span></td>
+                                    <td>09.30 - 12.00</td>
+                                    <td><strong>Informatika & Komputer</strong></td>
+                                    <td>Lab Komputer 2</td>
+                                    <td>INF-05</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag wed">Rabu</span></td>
+                                    <td>13.00 - 15.30</td>
+                                    <td><strong>Geografi Regional</strong></td>
+                                    <td>Ruang Kelas F4.2</td>
+                                    <td>GEO-01</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag thu">Kamis</span></td>
+                                    <td>07.00 - 09.15</td>
+                                    <td><strong>Pendidikan Agama & Budi Pekerti</strong></td>
+                                    <td>Ruang Agama / Kelas</td>
+                                    <td>PAI-01</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag thu">Kamis</span></td>
+                                    <td>09.30 - 12.00</td>
+                                    <td><strong>PJOK / Olahraga Outdoor</strong></td>
+                                    <td>Lapangan Olahraga</td>
+                                    <td>PJK-01</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag fri">Jumat</span></td>
+                                    <td>07.00 - 09.00</td>
+                                    <td><strong>Seni Budaya & Desain Graphic</strong></td>
+                                    <td>Ruang Seni</td>
+                                    <td>SNB-02</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="day-tag fri">Jumat</span></td>
+                                    <td>09.15 - 11.30</td>
+                                    <td><strong>Bimbingan Konseling / Development</strong></td>
+                                    <td>Ruang BK / Kelas</td>
+                                    <td>BK-01</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. HABIT TRACKER SECTION -->
+            <section id="tracker" class="page-section">
+                <div class="card" id="habitAnalyticsCard">
+                    <div class="card-header flex-between">
+                        <div>
+                            <i class="fa-solid fa-chart-line"></i>
+                            <h3>Habit Progress Harian</h3>
+                        </div>
+                        <button id="resetHabitsBtn" class="btn-sm btn-outline"><i class="fa-solid fa-rotate-left"></i> Reset Hari Ini</button>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar-bg">
+                            <div id="habitProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span id="habitPercentText" class="percent-text">0% Completed</span>
+                            <span id="habitSummaryText" class="summary-text">Selesaikan target untuk konsistensi harian!</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa-solid fa-user"></i>
-                        <h3>Profil Ringkas</h3>
-                    </div>
-                    <ul class="info-list">
-                        <li><strong>Status:</strong> Siswa / Student</li>
-                        <li><strong>Fokus Utama:</strong> Akademik & Development</li>
-                        <li><strong>Target Karir:</strong> Professional Goals</li>
-                    </ul>
-                </div>
-
-                <!-- Quick Stats -->
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fa-solid fa-bullseye"></i>
-                        <h3>Fokus Harian</h3>
-                    </div>
-                    <ul class="info-list">
-                        <li>🎯 Selesaikan checklist habit harian</li>
-                        <li>📚 Review materi sekolah / persiapan ujian</li>
-                        <li>🏋️ Eksekusi program latihan fisik</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. JADWAL AKADEMIK SECTION -->
-        <section id="sekolah" class="page-section">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    <h3>Jadwal Pelajaran Harian</h3>
-                </div>
-                
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Hari</th>
-                                <th>Jam</th>
-                                <th>Mata Pelajaran</th>
-                                <th>Ruangan / Ruang Baca</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Senin</td>
-                                <td>07.00 - 09.00</td>
-                                <td>Mata Pelajaran 1</td>
-                                <td>Ruang Kelas A</td>
-                            </tr>
-                            <tr>
-                                <td>Senin</td>
-                                <td>09.15 - 11.30</td>
-                                <td>Mata Pelajaran 2</td>
-                                <td>Ruang Kelas A</td>
-                            </tr>
-                            <tr>
-                                <td>Selasa</td>
-                                <td>07.00 - 09.00</td>
-                                <td>Mata Pelajaran 3</td>
-                                <td>Laboratorium / Ruang Praktikum</td>
-                            </tr>
-                            <tr>
-                                <td>Selasa</td>
-                                <td>09.15 - 11.30</td>
-                                <td>Mata Pelajaran 4</td>
-                                <td>Ruang Kelas B</td>
-                            </tr>
-                            <tr>
-                                <td>Rabu</td>
-                                <td>07.00 - 10.00</td>
-                                <td>Mata Pelajaran 5</td>
-                                <td>Ruang Kelas A</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. HABIT TRACKER SECTION -->
-        <section id="tracker" class="page-section">
-            <div class="card">
-                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
                         <i class="fa-solid fa-list-check"></i>
-                        <h3 style="display: inline-block; margin-left: 8px;">Checklist Kebiasaan Harian</h3>
+                        <h3>Daftar Kebiasaan Rutin</h3>
                     </div>
-                    <button id="resetHabits" class="btn-reset">Reset Hari Ini</button>
+                    <div class="habit-group">
+                        <div class="habit-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="habit_water" class="habit-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="habit-text">💧 Minum Air Putih 500ml Setelah Bangun Tidur</span>
+                            </label>
+                        </div>
+                        <div class="habit-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="habit_skincare_morning" class="habit-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="habit-text">✨ Skincare Pagi (Cleanser + Hydrating Toner + Sunscreen)</span>
+                            </label>
+                        </div>
+                        <div class="habit-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="habit_read" class="habit-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="habit-text">📖 Membaca Buku / Jurnal Hukum (Minimal 20 Menit)</span>
+                            </label>
+                        </div>
+                        <div class="habit-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="habit_workout" class="habit-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="habit-text">🏋️ Latihan Fisik (Gym / Push-Pull-Leg Routine)</span>
+                            </label>
+                        </div>
+                        <div class="habit-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="habit_protein" class="habit-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="habit-text">🥩 Pemenuhan Target Protein Harian (Tinggi Nutrisi)</span>
+                            </label>
+                        </div>
+                        <div class="habit-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="habit_skincare_night" class="habit-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="habit-text">🌙 Skincare Malam (Double Cleansing + Barrier Repair)</span>
+                            </label>
+                        </div>
+                        <div class="habit-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="habit_sleep" class="habit-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="habit-text">😴 Tidur Tepat Waktu (Optimal Sleep Duration)</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
+            </section>
 
-                <div class="habit-list" style="margin-top: 16px;">
-                    <div class="habit-item">
-                        <input type="checkbox" id="habit1" class="habit-checkbox">
-                        <label for="habit1">🌅 Bangun Pagi & Air Putih 500ml</label>
+            <!-- 4. POMODORO TIMER SECTION -->
+            <section id="pomodoro" class="page-section">
+                <div class="card text-center">
+                    <div class="card-header center-header">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <h3>Focus Pomodoro Timer</h3>
                     </div>
-                    <div class="habit-item">
-                        <input type="checkbox" id="habit2" class="habit-checkbox">
-                        <label for="habit2">✨ Skincare Routine Pagi & Sunscreen</label>
+                    <p class="section-desc">Gunakan metode 25 menit fokus penuh untuk belajar dan pengerjaan tugas tanpa gangguan.</p>
+                    
+                    <div class="timer-display-box">
+                        <div id="pomodoroDisplay" class="timer-digits">25:00</div>
+                        <div id="timerModeText" class="timer-mode">FOCUS SESSION</div>
                     </div>
-                    <div class="habit-item">
-                        <input type="checkbox" id="habit3" class="habit-checkbox">
-                        <label for="habit3">📚 Belajar / Review Pelajaran (25-45 Menit)</label>
-                    </div>
-                    <div class="habit-item">
-                        <input type="checkbox" id="habit4" class="habit-checkbox">
-                        <label for="habit4">🏋️ Olahraga / Physical Training</label>
-                    </div>
-                    <div class="habit-item">
-                        <input type="checkbox" id="habit5" class="habit-checkbox">
-                        <label for="habit5">🌙 Night Skincare & Persiapan Tidur</label>
+
+                    <div class="timer-controls">
+                        <button id="startTimerBtn" class="btn-timer btn-start"><i class="fa-solid fa-play"></i> Start</button>
+                        <button id="pauseTimerBtn" class="btn-timer btn-pause"><i class="fa-solid fa-pause"></i> Pause</button>
+                        <button id="resetTimerBtn" class="btn-timer btn-reset"><i class="fa-solid fa-rotate-right"></i> Reset</button>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 4. WORKOUT / FITNESS SECTION -->
-        <section id="fitness" class="page-section">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fa-solid fa-dumbbell"></i>
-                    <h3>Program Latihan Fisik</h3>
+            <!-- 5. WORKOUT SECTION -->
+            <section id="fitness" class="page-section">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <h3>Program Latihan Gym (Push, Pull, Legs x Upper, Lower)</h3>
+                    </div>
+                    
+                    <div class="grid-layout grid-2">
+                        <div class="workout-card">
+                            <h4><i class="fa-solid fa-child-reaching"></i> Hari 1: Push Focus (Dada, Bahu, Triceps)</h4>
+                            <ul>
+                                <li>Bench Press / Incline Dumbbell Press (3 Set x 8-12 Reps)</li>
+                                <li>Overhead Shoulder Press (3 Set x 10 Reps)</li>
+                                <li>Lateral Raises for Side Delts (4 Set x 12-15 Reps)</li>
+                                <li>Tricep Cable Pushdowns (3 Set x 12 Reps)</li>
+                            </ul>
+                        </div>
+
+                        <div class="workout-card">
+                            <h4><i class="fa-solid fa-dumbbell"></i> Hari 2: Pull Focus (Punggung, Biceps)</h4>
+                            <ul>
+                                <li>Lat Pulldowns / Cable Rows (4 Set x 8-12 Reps)</li>
+                                <li>Face Pulls for Rear Delts (3 Set x 15 Reps)</li>
+                                <li>Bicep Dumbbell Curls (3 Set x 12 Reps)</li>
+                                <li>Hammer Curls (3 Set x 12 Reps)</li>
+                            </ul>
+                        </div>
+
+                        <div class="workout-card">
+                            <h4><i class="fa-solid fa-person-running"></i> Hari 3: Legs & Core Focus</h4>
+                            <ul>
+                                <li>Leg Press / Bulgarian Split Squats (4 Set x 10-12 Reps)</li>
+                                <li>Romanian Deadlifts (Hamstrings) (3 Set x 10 Reps)</li>
+                                <li>Calf Raises & Leg Extensions (4 Set x 15 Reps)</li>
+                                <li>Hanging Leg Raises / Core Work (3 Set)</li>
+                            </ul>
+                        </div>
+
+                        <div class="workout-card">
+                            <h4><i class="fa-solid fa-bed"></i> Hari 4: Active Recovery & Rest</h4>
+                            <ul>
+                                <li>Jalan Santai / Light Cardio (20-30 Menit)</li>
+                                <li>Stretching & Muscle Foam Rolling</li>
+                                <li>Fokus Pemulihan Protein Harian</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <ul class="info-list">
-                    <li><strong>Hari 1:</strong> Upper Body Focus (Dada, Bahu, Triceps)</li>
-                    <li><strong>Hari 2:</strong> Lower Body Focus (Kaki, Core)</li>
-                    <li><strong>Hari 3:</strong> Pull Focus (Punggung, Biceps)</li>
-                    <li><strong>Hari 4:</strong> Rest & Active Recovery</li>
-                </ul>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <!-- SCRIPT LINK -->
+            <!-- 6. SKINCARE SECTION -->
+            <section id="skincare" class="page-section">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <h3>K-Beauty Skincare Regimen (Oil Control & Barrier Repair)</h3>
+                    </div>
+                    
+                    <div class="grid-layout grid-2">
+                        <div class="skincare-card">
+                            <span class="routine-badge morning">☀️ ROUTINE PAGI</span>
+                            <ol class="skincare-list">
+                                <li><strong>Gentle Cleanser:</strong> Membersihkan minyak alami tanpa mengikis kulit.</li>
+                                <li><strong>Hydrating Toner / Essence:</strong> Menjaga hidrasi barrier kulit.</li>
+                                <li><strong>Moisturizer Ringan:</strong> Tekstur gel/soothing agent.</li>
+                                <li><strong>Sunscreen Broad Spectrum:</strong> Wajib minimal SPF 30+ PA+++.</li>
+                            </ol>
+                        </div>
+
+                        <div class="skincare-card">
+                            <span class="routine-badge night">🌙 ROUTINE MALAM</span>
+                            <ol class="skincare-list">
+                                <li><strong>First Cleanser (Cleansing Oil/Micellar):</strong> Membersihkan sunscreen & debu.</li>
+                                <li><strong>Second Cleanser:</strong> Facial wash lembut.</li>
+                                <li><strong>Soothing & Barrier Serum:</strong> Kandungan Centella / Ceramides.</li>
+                                <li><strong>Nourishing Moisturizer:</strong> Mengunci kelembapan saat tidur.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FLOATING TOGGLE BUTTON UNTUK IPHONE / HP -->
+    <button id="floatingMenuBtn" class="floating-menu-btn" aria-label="Toggle Menu">
+        <i class="fa-solid fa-compass"></i>
+    </button>
+
     <script src="script.js"></script>
 </body>
 </html>
